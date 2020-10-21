@@ -375,28 +375,6 @@ def levenshtein(args):
     missed_url_train = 0 
     missed_url_test = 0 
 
-<<<<<<< HEAD
-    # use all if specified 
-    if all_flag: 
-        # make training set
-        for key, value in data_set_one.items(): 
-            for example in range(0, len(value)):
-                train_probes.append((key, value[example]))
-
-        for key, value in data_set_two.items(): 
-            for example in range(start, len(value)):
-                test_probes.append((key, value[example]))
-
-    else: 
-        # make training set
-        for key, value in data_set_one.items(): 
-            for example in range(0, examples_one):
-                train_probes.append((key, value[example]))
-
-        for key, value in data_set_two.items(): 
-            for example in range(start, examples_two):
-                test_probes.append((key, value[example]))
-=======
     # make training set
     for key, value in data_set_one.items(): 
         for example in range(0, examples_one):
@@ -415,18 +393,13 @@ def levenshtein(args):
                 print("missed url {}".format(key))
                 missed_url_test += 1
                 continue
->>>>>>> 1c2f24b4dfd669d4cd7c99e2caa62bc4e88962cb
 
     correct = 0 
     total = 0 
     incorrect = 0
 
     for test_probe in test_probes:
-<<<<<<< HEAD
-        time1 = time.time()
-=======
         # match test_probe againsts all train probes 
->>>>>>> 1c2f24b4dfd669d4cd7c99e2caa62bc4e88962cb
         match, dist = levenshtein_tools.least_distance(train_probes, test_probe)
         time2 = time.time()
         logger.debug('time: {}'.format(time2 - time1))
