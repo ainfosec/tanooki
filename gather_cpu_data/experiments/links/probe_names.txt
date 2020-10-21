@@ -1,0 +1,4 @@
+kill_html_stack_item
+html_stack_dup
+html_a
+parse_html
