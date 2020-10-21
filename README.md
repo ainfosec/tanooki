@@ -4,7 +4,7 @@ tanooki a cache grabbing tool. This work is an extension of Horby's [Side-Channe
 
 # Getting Started Guide
 
-This guide will get you though the code in this repo. It assumes you are running Ubuntu 18.04. But should be relativly similar to any Debian distro. It also assumes you are running this on a vulnerable intel processor, and not from a type 2 hypervisor (i.e. Virtual Box). Type 1 hypervisors will work just fine.
+This guide will get you though the code in this repo. It assumes you are running Ubuntu 18.04. But should be relativly similar to any Debian distro. It also assumes you are running this on a vulnerable intel processor, and not from a type 2 hypervisor (i.e. Virtual Box). Type 1 hypervisors will work just fine, I think, this hasn't been tested fully.
 
 ## Table of Contents
 
