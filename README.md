@@ -217,7 +217,7 @@ cd gather_data/flush-reload/myversion
 ```
 
 Your graph should look something like this...
-![Good Bench](https://gitlab.ainfosec.com/SAE/skunkworks/kernel-side-channel-attacks/raw/master/present/mermaid/cache_bench_good.png "Good Bench")
+![Good Bench](https://raw.githubusercontent.com/sognefej/tanooki/master/media/cache_bench.png "Good Bench")
 
 If not you may not be able to get this code to work for you.
 
