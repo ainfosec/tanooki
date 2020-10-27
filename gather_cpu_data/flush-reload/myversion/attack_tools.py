@@ -520,7 +520,7 @@ def main():
     parser_gather_data.add_argument('target_binary', type=str, help='Path to the binary to target.')
     parser_gather_data.add_argument('input_list', type=str, help='Path to list of inputs for run_binary.')
     parser_gather_data.add_argument('probe_file', type=str, help='Path to probe file.')
-    parser_gather_data.add_argument('samples', type=int, help='Number of sample to capture')
+    parser_gather_data.add_argument('samples', type=int, help='Number of samples to capture')
     parser_gather_data.add_argument('train_dir', type=str, help='Directory to save training info in.')
     parser_gather_data.add_argument('--sleep_kill', metavar='', type=int, default=10, 
                                     help='Kill process after N number of seconds (default: 1)')
