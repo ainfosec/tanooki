@@ -589,7 +589,7 @@ def main():
     # gen data arguments
     parser_gen_data.add_argument('target_data', type=str, help='Path to data to be processes.')
     parser_gen_data.add_argument('output_data', type=str, help='Path to output the cleaned data.')
-    parser_gen_data.add_argument('--len', metavar='', default=450, type=int, help='Len of the string to truncate too. (Default to 450 characters)')
+    parser_gen_data.add_argument('--len', metavar='', default=450, type=int, help='Len of the string to truncate to. (Default to 450 characters)')
     parser_gen_data.add_argument('--split', metavar='', default=0.9, type=float, help='When to split to eval. (Default to .90 train .10 eval)')
     parser_gen_data.add_argument('--spy_data', default=False, action='store_true', help='Is this new spy data? (i.e) preparing the data for prediction.')
 
@@ -597,7 +597,7 @@ def main():
     parser_train.add_argument('train_file', type=str, help='Path to train csv.')
     parser_train.add_argument('eval_file', type=str, help='Path to eval csv.')
     parser_train.add_argument('--epochs', default=20, type=int,  help='Number or epochs. (default: 20)')
-    parser_train.add_argument('--keep_training', action='store_true', default=False, help='keep training n number of epochs. (pass in exsisting checkpoint_dir)')
+    parser_train.add_argument('--keep_training', action='store_true', default=False, help='keep training n number of epochs. (pass in existing checkpoint_dir)')
     parser_train.add_argument('--training_dir', metavar='', default='./training', type=str, help='Directory to store training sessions. (defualt ./training)')
     parser_train.add_argument('--checkpoint_dir', metavar='', default=None, type=str, help='checkpoint directory.')
     #parser_train.add_argument('--truncate', metavar='', default=450, type=int, help='truncate data. (default: None)') 
@@ -616,7 +616,7 @@ def main():
     parser_predict.add_argument('predict_file', type=str, help='Path to probe csv.')
     parser_predict.add_argument('checkpoint_dir', type=str, help='Path to checkpoint dir.')
     #parser_predict.add_argument('--truncate', metavar='', default=450, type=int, help='truncate data.')
-    parser_predict.add_argument('--fun', default=False, action="store_true", help='the fun way to dispaly data.')
+    parser_predict.add_argument('--fun', default=False, action="store_true", help='the fun way to display data.')
     parser_predict.add_argument('--vocab', metavar='', default='./vocab.txt', type=str, help="vocab file")
 
     # gen stats arguments

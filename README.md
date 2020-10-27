@@ -1,10 +1,10 @@
 # tanooki 
 
-tanooki a cache grabbing tool. This work is an extension of Horby's [Side-Channel Attacks on Everyday Applications](https://github.com/defuse/flush-reload-attacks) and is pending publication. This tool goes the next step further and introduced an RNN as the classifier instead of the Levenshtein distance clustering algorithm. Below are the instructions on how to get you started along with some data and some already trained models! Enjoy. 
+tanooki a cache grabbing tool. This work is an extension of Horby's [Side-Channel Attacks on Everyday Applications](https://github.com/defuse/flush-reload-attacks) and is pending publication. This tool goes the next step further and introduced an RNN as the classifier instead of the Levenshtein  distance clustering algorithm. Below are the instructions on how to get you started along with some data and some already trained models! Enjoy. 
 
 # Getting Started Guide
 
-This guide will get you though the code in this repo. It assumes you are running Ubuntu 18.04. But should be relativly similar to any Debian distro. It also assumes you are running this on a vulnerable intel processor, and not from a type 2 hypervisor (i.e. Virtual Box). Type 1 hypervisors will work just fine, I think, this hasn't been tested fully.
+This guide will get you though the code in this repo. It assumes you are running Ubuntu 18.04, but should be relatively similar to any Debian distro. It also assumes you are running this on a vulnerable Intel processor, and not from a type 2 hypervisor (i.e. Virtual Box). Type 1 hypervisors will work just fine, I think, this hasn't been tested fully.
 
 ## Table of Contents
 
@@ -91,7 +91,7 @@ sudo apt install -y git make gcc python3 python3-pip
 
 ### 1. Building Links from Source <a name="BuildingLinksFromSource"></a>
 
-We will be using the same target as Hornby did for this tutoral. We can't use what's inthe repos because we need the debug info for the following steps.
+We will be using the same target as Hornby did for this tutorial. We can't use what's in the apt repo because we need the debug info for the following steps.
 
 Go to the [Links download page](http://links.twibright.com/download.php) and
 grab the source code.
@@ -168,8 +168,8 @@ Save those probe addresses to a file. Copy and paste the output into
 
 ### 4. Gather Data <a name="GatherData"></a>
 
-You will need training data to train the model. This is the step where we gather data.
-Alternalivly you can run the gather data script.
+You will need training data to train the model. This is the step where we gather data,
+alternatively you can run the gather data script.
 
 #### 4.1 Run Gather Data Tool <a name="RunGatherDataTool"></a>
 
@@ -186,7 +186,7 @@ positional arguments:
   target_binary  Path to the binary to target.
   input_list     Path to list of inputs for run_binary.
   probe_file     Path to probe file.
-  samples        Number of sample to capture
+  samples        Number of samples to capture
   train_dir      Directory to save training info in.
 
 optional arguments:
@@ -204,8 +204,8 @@ optional arguments:
 ➜ ./gather_data.sh
 ```
 
-Samples should have been set to 10, but you will need more than that to train the model.
-Edit the file and change samlples to 100 or more. However you might want to run it with 10 
+Samples should have been set to 100, but you will need more than that to train the model.
+Edit the file and change samples to 100 or more. However, you might want to run it with 10 
 first just to make sure it works. If it's just not working, one reason could be that the tool
 can't distinguish between what is and what is not in the cache...
 
@@ -217,7 +217,7 @@ cd gather_data/flush-reload/myversion
 ```
 
 Your graph should look something like this...
-![Good Bench](https://gitlab.ainfosec.com/SAE/skunkworks/kernel-side-channel-attacks/raw/master/present/mermaid/cache_bench_good.png "Good Bench")
+![Good Bench](https://raw.githubusercontent.com/sognefej/tanooki/master/media/cache_bench.png "Good Bench")
 
 If not you may not be able to get this code to work for you.
 
@@ -249,16 +249,16 @@ This will take a couple hours.
 
 #### 4.2 Check and Prepare your Sample <a name="CheckAndPrepareYourSample"></a>
 
-Check your samples to make sure you have collected all your data. We reccomend you have as little as possible running on your machine while you gather this data. Higher system laods will impact your accuracy.
+Check your samples to make sure you have collected all your data. We recommend you have as little as possible running on your machine while you gather this data. Higher system loads will impact your accuracy.
 
 ```bash
 ➜ cd data/session_02
 ➜ less 02_SESSION_INFO
 ```
 
-Should look somthing like this. This files reads as follows:
+Should look something like this. This files reads as follows:
 
-**sha256_hash_of_url**: **sucesses/sample_size** : **cat** **/proc/loadavg**
+**sha256_hash_of_url**: **successes/sample_size** : **cat** **/proc/loadavg**
 
 ```bash
 b0f40a61f4837fe99f782e3a93b9925c4ba50c2cad456a51a5b09607b2f7f151 : [10/10] : 0.19 0.60 0.49 1/614 12802
@@ -276,11 +276,11 @@ If any of them read less then 10 out of 10 then you might need to borrow samples
 
 #### 4.3 Offload the Data to your GPU Enabled Machine <a name="OffloadTheDataToYourGPUEnabledMachine"></a>
 
-If you happen to have a gpu on the mahine you gathered your data from, then you can skip this step.
+If you happen to have a gpu on the machine you gathered your data from, then you can skip this step.
 
 ### 5. Gen Data <a name="GenData"></a>
 
-After gathering you training data it needs to be put in a format that tensoflow can understand.
+After gathering you training data it needs to be put in a format that TensorFlow can understand.
 We've written a script that can do this for you.
 
 #### 5.1 Format your Data <a name="FormatYourData"></a>
@@ -298,7 +298,7 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
-  --len        Len of the string to truncate too. (Default to 450 characters)
+  --len        Len of the string to truncate to. (Default to 450 characters)
   --split      When to split to eval. (Default to .90 train .10 eval)
   --spy_data   Is this new spy data? (i.e) preparing the data for prediction.
 ```
@@ -312,7 +312,7 @@ optional arguments:
 
 You need to train your model to perform predictions.
 
-#### 6.1 Trian your RNN <a name="TrianYourRNN"></a>
+#### 6.1 Train your RNN <a name="TrianYourRNN"></a>
 
 ```bash
 ➜ ./data_center.py train -h
@@ -327,11 +327,11 @@ positional arguments:
 optional arguments:
   -h, --help         show this help message and exit
   --epochs EPOCHS    Number or epochs. (default: 20)
-  --keep_training    keep training n number of epochs. (pass in exsisting
+  --keep_training    keep training n number of epochs. (pass in existing
                      checkpoint_dir)
   --training_dir     Directory to store training sessions.
   --checkpoint_dir   checkpoint directory.
-  --truncate         truncate data. (defualt: None)
+  --truncate         truncate data. (default: None)
   ```
 
 Make the training directory.
@@ -388,7 +388,7 @@ Now you need some new spy data to test out your new model.
 
 #### 8.1 Be the Attacker <a name="BeTheAttacker"></a>
 
-Assumeing that your model is good go ahead and try it out.
+Assuming that your model is good go ahead and try it out.
 
 ```bash
 ➜ ./spy -h
@@ -400,7 +400,7 @@ Usage: spy -e ELFPATH -t CYCLES -s CYCLES -p PROBE [-p PROBE ...] [-m]
     -p, --probe N:0xDEADBEEF		Name character : Virtual address.
 ```
 
-Run the spy tool (agian my probes may not be the same as yours)
+Run the spy tool (again my probes may not be the same as yours)
 
 ```bash
 ➜ cd gather_cpu_data/flush-reload/myversion/
@@ -429,7 +429,7 @@ the data_center know this is spy data.
 
 #### 8.4 Predict <a name="Predict"></a> 
 
-Now that everything is ready go ahead and predict.
+Now that everything is ready, go ahead and predict.
 
 ```bash
 ➜  ./data_center.py predict --help
@@ -441,7 +441,7 @@ positional arguments:
 optional arguments:
   -h, --help      show this help message and exit
   --truncate      truncate data.
-  --fun           the fun way to dispaly data.
+  --fun           the fun way to display data.
 ```
 
 ```bash
